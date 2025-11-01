@@ -9,18 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (i < textToType.length) {
                 typingElement.innerHTML += textToType.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100); 
+                setTimeout(typeWriter, 100);
             } else {
+              
                 typingElement.style.borderRight = 'none';
             }
         }
     }
-    typeWriter();
-
+    typeWriter(); 
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     
     if (scrollTopBtn) { 
         window.onscroll = function() {
+            
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 scrollTopBtn.classList.add('show');
             } else {
@@ -29,33 +30,41 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         scrollTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            e.preventDefault(); 
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
         });
-    }
-    
-    const menuToggleBtn = document.getElementById('menu-toggle-btn');
-    const mainNavMenu = document.getElementById('main-nav-menu');
 
-    if (menuToggleBtn && mainNavMenu) {
-        
-        menuToggleBtn.addEventListener('click', () => {
-            mainNavMenu.classList.toggle('active');
+const menuToggle = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+
+const navLinks = document.querySelectorAll('.nav-menu .nav-links a');
+
+
+function toggleMenu() {
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');  
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+
+function closeMenu() {
+    navMenu.classList.remove('active');
+    menuToggle.classList.remove('active');
+}
+
+
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+
+
+
+    }
+
+
             
-            if (mainNavMenu.classList.contains('active')) {
-                menuToggleBtn.innerHTML = '✖';
-            } else {
-                menuToggleBtn.innerHTML = '☰';
-            }
-        });
-
-        const navLinks = mainNavMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNavMenu.classList.remove('active');
-                menuToggleBtn.innerHTML = '☰';
-            });
-        });
-    }
+        
+    
 
 });
