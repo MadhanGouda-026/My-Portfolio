@@ -1,0 +1,463 @@
+/* ======== 0. Global Styles & Variables ======== */
+:root {
+    --bg-dark-navy: rgba(2,4,7,100);      /* Main Background */
+    --bg-dark-navy: ;      /* Main Background */
+    --bg-light-navy: #f9f8f9;     /* Card Background */
+    --accent-color: #00b347;     /* Bright Accent (Neon Mint) */
+    --text-lightest: #111111;    /* Main Text */
+    --text-light: #333333;       /* Sub-text */
+    --text-dark: #555555;        /* Darker Text */
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 179, 71, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+
+    /* (ಹೊಸದು) Light Green to White Gradient Background */
+    background-color: #ffffff; /* ಹಳೆ ಬ್ರೌಸರ್‌ಗಳಿಗಾಗಿ ಬಿಳಿ ಬಣ್ಣ */
+    background-image: linear-gradient(
+        to bottom, 
+        #e8fff5, /* ತುಂಬಾ ತಿಳಿ ಹಸಿರು */
+        #ffffff  /* ಬಿಳಿ */
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* ಸ್ಕ್ರಾಲ್ ಮಾಡಿದಾಗ ಗ್ರೇಡಿಯಂಟ್ ನಿಲ್ಲುತ್ತದೆ */
+
+    color: var(--text-light);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-lightest);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+/* Underline effect for titles */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ======== 1. Navigation Bar (Glass Effect) ======== */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 0;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-lightest);
+    text-decoration: none;
+}
+
+.navbar .logo span {
+    color: var(--accent-color);
+}
+
+.navbar .nav-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-menu li {
+    margin-left: 25px;
+}
+
+.navbar .nav-menu a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* ======== 2. Hero Section ======== */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 100px; /* Offset for navbar */
+}
+
+.hero .hero-sub {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.hero .hero-title {
+    font-size: 4rem;
+    color: var(--text-lightest);
+    margin-bottom: 10px;
+}
+
+.hero .hero-tagline {
+    font-size: 2.5rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.hero .hero-desc {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* Primary Button Style */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+}
+
+/* ======== 3. About Me ======== */
+.about .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* ======== 4. Skills Section ======== */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill-tag {
+    background: var(--bg-light-navy);
+    color: var(--accent-color);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid var(--accent-color);
+}
+
+/* ======== 5. Experience (Timeline Card) ======== */
+.exp-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px var(--card-shadow);
+}
+
+.exp-card h3 {
+    color: var(--text-lightest);
+    font-size: 1.5rem;
+}
+
+.exp-card .exp-company {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.exp-card .exp-date {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.exp-card ul {
+    list-style-position: inside;
+}
+
+/* ======== 6 & 7. Card Grid (Education & Projects) ======== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 15px var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h4 {
+    color: var(--text-lightest);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.card .date {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.project-card .project-links {
+    margin-top: 20px;
+}
+
+.project-card .project-links a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-right: 20px;
+}
+.certification-card-container .card {
+    max-width: 800px; /* (ಹಿಂದೆ 400px ಇತ್ತು) "width jasti" */
+    width: 100%;
+}
+
+
+.project-card .project-links a:hover {
+    text-decoration: underline;
+}
+
+/* ======== 8. Contact Section ======== */
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+}
+
+/* ======== 9. Footer ======== */
+.footer {
+    background: var(--bg-light-navy);
+    color: var(--text-dark);
+    text-align: center;
+    padding: 25px 0;
+}
+
+
+/* ======== 10. Responsive Design (Mobile) ======== */
+
+/* --- ರೆಸ್ಪಾನ್ಸಿವ್ ಹ್ಯಾಂಬರ್ಗರ್ ಮೆನುಗಾಗಿ ಕೋಡ್ --- */
+/* (ಈ ಭಾಗವು ಮೀಡಿಯಾ ಕ್ವೆರಿಯ ಹೊರಗೆ ಇರಬೇಕು) */
+.menu-toggle {
+    display: none; /* ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ಮರೆಮಾಡಿ */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100; /* ಮೆನು ಮೇಲೆ ಕಾಣಿಸಲು */
+}
+
+/* --- ಹ್ಯಾಂಬರ್ಗರ್ 'X' ಅನಿಮೇಷನ್‌ಗಾಗಿ --- */
+.menu-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-lightest);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out; /* ಅನಿಮೇಷನ್‌ಗಾಗಿ */
+}
+
+/* JavaScript 'active' ಕ್ಲಾಸ್ ಸೇರಿಸಿದಾಗ ಇದು ಕೆಲಸ ಮಾಡುತ್ತದೆ */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+/* ======== 7. (ಹೊಸದು) Certification Card Styles ======== */
+
+/* ಇದು ಕಾರ್ಡ್ ಅನ್ನು ಮಧ್ಯದಲ್ಲಿ (center) ಇರಿಸುತ್ತದೆ */
+.certification-card-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* ಇದು ಕಾರ್ಡ್‌ನ "Width Jasti" (ಅಗಲ) ಹೊಂದಿಸುತ್ತದೆ */
+.certification-card-container .card {
+    max-width: 600px; /* (ನಿಮಗೆ ಬೇಕಾದ ಅಗಲ) */
+    width: 100%;
+}
+
+/* ಇದು "Height Sanna" (padding ಕಡಿಮೆ) ಮತ್ತು ಬಟನ್ ಲೇಔಟ್ ಅನ್ನು ಹೊಂದಿಸುತ್ತದೆ */
+.certification-card-layout {
+    display: flex;
+    justify-content: space-between; /* Text (left) ಮತ್ತು Button (right) */
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.certification-card-layout h4 {
+    margin-bottom: 5px; /* ಅಂತರ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ */
+}
+
+.certification-card-layout p {
+    margin: 0; /* ಹೆಚ್ಚುವರಿ ಅಂತರ ತೆಗೆದುಹಾಕುತ್ತದೆ */
+}
+
+/* Download Button (⬇️) Style */
+.download-btn {
+    text-decoration: none;
+    font-size: 2rem; /* ಐಕಾನ್ ಗಾತ್ರ */
+    color: var(--accent-color); /* ಹಸಿರು ಬಣ್ಣ */
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.download-btn:hover {
+    transform: scale(1.1); /* Hover ಮಾಡಿದಾಗ ದೊಡ್ಡದಾಗಲಿ */
+    background-color: rgba(0, 179, 71, 0.1); /* ತಿಳಿ ಹಸಿರು ಹಿನ್ನೆಲೆ */
+}
+
+
+
+
+/* --- ಮೊಬೈಲ್ ಸ್ಟೈಲ್‌ಗಳಿಗಾಗಿ ಒಂದೇ ಮೀಡಿಯಾ ಕ್ವೆರಿ --- */
+@media (max-width: 768px) {
+    
+    /* ನಿಮ್ಮ ಹಳೆಯ ಹೀರೋ ಸ್ಟೈಲ್‌ಗಳು */
+    .hero .hero-title { 
+        font-size: 3rem; 
+    }
+    
+    .hero .hero-tagline { 
+        font-size: 1.8rem; 
+    }
+    
+    .hero { 
+        padding-top: 100px; /* Navbar ಗೆ ಜಾಗ ಬಿಡಲು */
+    }
+
+    /* --- ಹ್ಯಾಂಬರ್ಗರ್ ಮೆನು ಸ್ಟೈಲ್‌ಗಳು (ಈಗ ಸರಿಯಾದ ಸ್ಥಳದಲ್ಲಿವೆ) --- */
+    
+    .navbar .container {
+        /* ಲೋಗೋ ಮತ್ತು ಐಕಾನ್ ಅನ್ನು ಅಕ್ಕಪಕ್ಕದಲ್ಲಿ ಇರಿಸಿ */
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: flex; /* ಮೊಬೈಲ್‌ನಲ್ಲಿ ಐಕಾನ್ ತೋರಿಸಿ */
+    }
+
+   /* --- ಸೈಡ್ ಮೆನುಗಾಗಿ (Side Menu) --- */
+/* (ಈ ಕೋಡ್ @media (max-width: 768px) ಒಳಗೆ ಇರಬೇಕು) */
+
+.navbar .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0; /* ಬಲ ಬದಿಯಿಂದ */
+    width: 200px;
+    height: 55vh;
+    background: orange;
+    backdrop-filter: blur(10px);
+    box-shadow: -5px 0 15px var(--card-shadow);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    display: flex;
+    transform: translateX(100%); /* ಬಲಕ್ಕೆ ಮರೆಮಾಡಿ */
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar .nav-menu.active {
+    transform: translateX(0); /* ಸ್ಲೈಡ್ ಇನ್ */
+}
+
+    /* ಸರಿಪಡಿಸಲಾಗಿದೆ (FIXED): .nav-links ಅನ್ನು ಸರಿಯಾಗಿ ಗುರಿಪಡಿಸಲಾಗಿದೆ */
+    .navbar .nav-links {
+        flex-direction: column; /* ಲಿಂಕ್‌ಗಳನ್ನು ಒಂದರ ಕೆಳಗೆ ಒಂದು ಜೋಡಿಸಿ */
+        width: 100%;
+    }
+
+    .navbar .nav-links li {
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar .nav-links a {
+        padding: 15px 0; /* ದೊಡ್ಡ ಕ್ಲಿಕ್ ಪ್ರದೇಶಕ್ಕಾಗಿ */
+        display: block; /* ಪೂರ್ತಿ ಅಗಲವನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ */
+        width: 100%;
+        
+        /* ಸರಿಪಡಿಸಲಾಗಿದೆ (FIXED): ತಿಳಿ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಡಾರ್ಕ್ ಟೆಕ್ಸ್ಟ್ */
+        color: blue;
+    }
+    
+    .navbar .nav-links a:hover {
+        /* ಸರಿಪಡಿಸಲಾಗಿದೆ (FIXED): ನಿಮ್ಮ ಥೀಮ್‌ಗೆ ಹೊಂದುವಂತೆ ಹೈಲೈಟ್ */
+        background-color: (--glass-border);
+        color: var(--accent-color);
+    }
+}
